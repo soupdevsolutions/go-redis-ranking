@@ -3,6 +3,9 @@
 This repository contains a basic setup using Go, Gin and Redis to build a ranking/leaderboard system.  
 You can find a full tutorial on how to build this on the [soup.dev blog](https://www.soup.dev/post/building-a-ranking-system-with-go-and-redis).
 
+
+
+
 ## Setup 
 
 You should have Go and either Docker or Redis installed on your system.  
@@ -77,3 +80,17 @@ curl -X GET http://localhost:8080/ranks?loffset=1&imit=3
     }
 ]
 ```
+
+# Result
+
+## RedisCommander
+
+http://localhost:8081
+
+![image](https://github.com/humbertodias/go-redis-ranking/assets/9255997/8ffd2d47-8e63-4855-8b48-1b0149ab69a5)
+
+## Ranks
+
+http://localhost:8080/ranks
+
+![image](https://github.com/humbertodias/go-redis-ranking/assets/9255997/25eebc81-8448-4d87-adcc-bfe17f40ead0)
