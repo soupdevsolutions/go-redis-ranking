@@ -9,20 +9,27 @@ You should have Go and either Docker or Redis installed on your system.
 
 To run the project, use the following commands:  
 
-```
-git clone https://github.com/soupdevsolutions/go-redis-ranking.git
+```shell
+git clone https://github.com/humbertodias/go-redis-ranking.git
 cd src
 go get .
-docker run -d -p 6379:6379 redis:latest // or redis-server
+docker run -d -p 6379:6379 redis:latest
 go run .
+```
+or
+
+```shell
+cd `mktemp -d` && git clone https://github.com/humbertodias/go-redis-ranking.git
+docker compose up -d
 ```
 
 ## Interacting with the system
 
 You can add new entries into the system by sending a POST request:
-```
+```shell
 curl -X POST http://localhost:8080/register -d '{"name":"test"}'
-
+```
+```
 {
    "id": "e309ab7e-6e02-4b60-a374-52cd5c2a41dd",
    "name": "user",
@@ -32,9 +39,10 @@ curl -X POST http://localhost:8080/register -d '{"name":"test"}'
 ```
 
 You can then use the id from the response to query the data for that entry:
-```
+```shell
 curl -X GET “http://localhost:8080/rank?id=e309ab7e-6e02-4b60-a374-52cd5c2a41dd”
-
+```
+```
 {
        "id": "e309ab7e-6e02-4b60-a374-52cd5c2a41dd",
        "name": "test",
@@ -44,9 +52,10 @@ curl -X GET “http://localhost:8080/rank?id=e309ab7e-6e02-4b60-a374-52cd5c2a41d
 ```
 
 Finally, you can get slices of the leaderboard by sending:
-```
+```shell
 curl -X GET http://localhost:8080/ranks?loffset=1&imit=3
-
+```
+```
 [
     {
            "id": "0a363580-98f9-4d4c-b57b-e30259807871",
