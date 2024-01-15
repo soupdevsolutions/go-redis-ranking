@@ -19,7 +19,7 @@ go run .
 or
 
 ```shell
-cd `mktemp -d` && git clone https://github.com/humbertodias/go-redis-ranking.git
+cd `mktemp -d` && git clone https://github.com/humbertodias/go-redis-ranking.git .
 docker compose up -d
 ```
 

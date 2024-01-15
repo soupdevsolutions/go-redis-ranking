@@ -6,8 +6,9 @@ services:
       - "8080:8080"
     depends_on:
       - redis
-    links:
-      - redis
+    environment:
+      - REDIS_ADDR=redis:6379
+      - REDIS_PASS=
 
   redis:
     image: "redis:alpine"

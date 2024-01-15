@@ -7,13 +7,24 @@ import (
 
 	"github.com/google/uuid"
 
+	"os"
+
 	"github.com/go-redis/redis/v9"
 )
 
+func getEnv(key, fallback string) string {
+	if value, ok := os.LookupEnv(key); ok {
+		return value
+	}
+	return fallback
+}
+
+var redisAddr = getEnv("REDIS_ADDR", "localhost:6379")
+var redisPass = getEnv("REDIS_PASS", "")
 var ctx = context.Background()
 var rdb = redis.NewClient(&redis.Options{
-	Addr:     "localhost:6379",
-	Password: "",
+	Addr:     redisAddr,
+	Password: redisPass,
 	DB:       0,
 })
 
