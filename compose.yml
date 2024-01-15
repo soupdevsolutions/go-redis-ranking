@@ -9,7 +9,7 @@ services:
     links:
       - redis
 
-  cache:
+  redis:
     image: "redis:alpine"
     ports:
       - "6379:6379"
@@ -18,7 +18,7 @@ services:
       - redis-data:/data
   
   # viewer
-  cache-viewer:
+  redis-viewer:
     image: rediscommander/redis-commander:latest
     environment:
       - REDIS_HOSTS=local:redis:6379
